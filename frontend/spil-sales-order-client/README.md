@@ -1,16 +1,109 @@
-# React + Vite
+# SPIL Sales Ordering System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Sales Order Management web application developed for the **SPIL Labs Pvt Ltd Intern Software Engineer Technical Assessment**.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Backend
+- ASP.NET Core Web API
+- Entity Framework Core
+- SQL Server
+- Layered Architecture
+- REST API
+- Dependency Injection
 
-## React Compiler
+### Frontend
+- React
+- React Hooks
+- React Router
+- Axios
+- Tailwind CSS
+- Redux Toolkit structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Home screen opens first
+- Sales order list grid
+- Add new sales order
+- Edit existing sales order by double-clicking a row
+- Customer dropdown loaded from database
+- Auto-fill customer address
+- Editable address fields
+- Item code dropdown
+- Item description dropdown
+- Auto-fill item price
+- Add multiple order items
+- Automatic line calculations
+- Automatic total calculations
+- Save sales order
+- Update sales order
+- Print sales order
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Calculation Logic
+
+```text
+Excl Amount = Quantity × Price
+Tax Amount  = Excl Amount × Tax Rate / 100
+Incl Amount = Excl Amount + Tax Amount
+
+## project structure
+SPIL-Sales-Order-System
+│
+├── backend
+│   └── SPILSalesOrder.API
+│       ├── Controllers
+│       ├── Models
+│       │   └── DTOs
+│       ├── Application
+│       │   ├── Interfaces
+│       │   └── Services
+│       ├── Domain
+│       │   └── Entities
+│       ├── Infrastructure
+│       │   ├── Data
+│       │   └── Repositories
+│       ├── Program.cs
+│       └── appsettings.json
+│
+└── frontend
+    └── spil-sales-order-client
+        └── src
+            ├── components
+            ├── pages
+            ├── redux
+            ├── services
+            ├── hooks
+            └── utils
+
+Database Tables
+Clients
+Items
+SalesOrders
+SalesOrderItems
+
+How to Run
+
+Backend
+cd backend/SPILSalesOrder.API
+dotnet restore
+dotnet ef database update
+dotnet run
+
+Frontend
+cd frontend/spil-sales-order-client
+npm install
+npm run dev
+
+API Endpoints
+GET    /api/clients
+GET    /api/items
+GET    /api/salesorders
+GET    /api/salesorders/{id}
+POST   /api/salesorders
+PUT    /api/salesorders/{id}
+
+Author
+
+Imasha Kumarasinghe
+Software Engineering Undergraduate
+Sabaragamuwa University of Sri Lanka
