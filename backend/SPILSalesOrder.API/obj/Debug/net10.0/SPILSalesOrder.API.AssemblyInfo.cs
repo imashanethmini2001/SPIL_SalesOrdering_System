@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SPILSalesOrder.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ab44d3d078cf9f92ee18222046891a735f04987")]
 [assembly: System.Reflection.AssemblyProductAttribute("SPILSalesOrder.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPILSalesOrder.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

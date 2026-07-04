@@ -20,95 +20,154 @@ function Home() {
     loadOrders();
   }, []);
 
+  const emptyRows = Math.max(7 - orders.length, 0);
+
   return (
-    <div className="min-h-screen bg-gray-100 p-5">
-      <div className="max-w-6xl mx-auto bg-white border-2 border-black">
-        <div className="bg-gray-200 border-b-2 border-black text-center py-1 font-semibold">
+  <div className="min-h-screen bg-gray-100 flex justify-center items-start p-6 text-sm text-gray-700">
+    
+    <div className="w-[930px] bg-white border-2 border-black">
+      {/* Header */}
+      <div className="h-7 bg-gray-100 border-b-2 border-black flex items-center">
+        <div className="flex gap-2 ml-3">
+  <div className="w-3.5 h-3.5 rounded-full bg-white border border-black flex items-center justify-center">
+    <span className="text-[9px] font-bold leading-none">+</span>
+  </div>
+
+  <div className="w-3.5 h-3.5 rounded-full bg-white border border-black flex items-center justify-center">
+    <span className="text-[9px] font-bold leading-none">−</span>
+  </div>
+
+  <div className="w-3.5 h-3.5 rounded-full bg-white border border-black flex items-center justify-center">
+    <span className="text-[9px] font-bold leading-none">×</span>
+  </div>
+</div>
+
+        <h1 className="flex-1 text-center mr-16 font-semibold text-sm">
           Home
-        </div>
+        </h1>
+      </div>
 
-        <div className="p-3 border-b-2 border-black">
-          <button
-            onClick={() => navigate("/sales-order")}
-            className="border-2 border-black rounded px-8 py-1 bg-white hover:bg-gray-100"
-          >
-            Add New
-          </button>
-        </div>
+      {/* Add New Row */}
+      <div className="h-10 border-b-2 border-black flex items-center px-2">
+        <button
+          onClick={() => navigate("/sales-order")}
+          className="
+w-28
+h-7
+bg-white
+border-2
+border-black
+rounded-md
+font-semibold
+text-sm
+hover:bg-gray-100
+transition
+"
+        >
+          Add New
+        </button>
+      </div>
 
-        <div className="p-4">
-          <table className="w-full border-2 border-black text-sm">
-            <thead className="bg-gray-300">
-              <tr>
-                <th className="border border-black p-2">Invoice No</th>
-                <th className="border border-black p-2">Invoice Date</th>
-                <th className="border border-black p-2">Customer</th>
-                <th className="border border-black p-2">Reference No</th>
-                <th className="border border-black p-2">Total Excl</th>
-                <th className="border border-black p-2">Total Tax</th>
-                <th className="border border-black p-2">Total Incl</th>
-              </tr>
-            </thead>
+      {/* Table */}
+      <div className="p-4">
+        <table className="w-full table-fixed border-2 border-black text-sm">
+          <thead>
+            <tr className="h-11 bg-gray-300">
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Invoice No
+              </th>
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Invoice Date
+              </th>
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Customer
+              </th>
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Reference No
+              </th>
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Total Excl
+              </th>
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Total Tax
+              </th>
+              <th className="border border-black px-2 text-left font-semibold">
+                ▼ Total Incl
+              </th>
+            </tr>
+          </thead>
 
-            <tbody>
-              {orders.length > 0 ? (
-                orders.map((order) => (
-                  <tr
-                    key={order.id}
-                    onDoubleClick={() => navigate(`/sales-order/${order.id}`)}
-                    className="cursor-pointer hover:bg-gray-100"
-                  >
-                    <td className="border border-black p-2">
-                      {order.invoiceNo}
-                    </td>
+          <tbody>
+  {/* Orders */}
+  {orders.map((order, index) => (
+    <tr
+      key={order.id}
+      onDoubleClick={() => navigate(`/sales-order/${order.id}`)}
+      className={`h-14 cursor-pointer hover:bg-gray-100 ${
+        index % 2 === 0 ? "bg-white" : "bg-gray-200"
+      }`}
+    >
+      <td className="border border-black px-2">
+        {order.invoiceNo}
+      </td>
 
-                    <td className="border border-black p-2">
-                      {order.invoiceDate
-                        ? order.invoiceDate.substring(0, 10)
-                        : ""}
-                    </td>
+      <td className="border border-black px-2">
+        {order.invoiceDate
+          ? order.invoiceDate.substring(0, 10)
+          : ""}
+      </td>
 
-                    <td className="border border-black p-2">
-                      {order.customerName}
-                    </td>
+      <td className="border border-black px-2">
+        {order.customerName}
+      </td>
 
-                    <td className="border border-black p-2">
-                      {order.referenceNo}
-                    </td>
+      <td className="border border-black px-2">
+        {order.referenceNo}
+      </td>
 
-                    <td className="border border-black p-2 text-right">
-                      {Number(order.totalExcl || 0).toFixed(2)}
-                    </td>
+      <td className="border border-black px-2 text-right">
+        {Number(order.totalExcl || 0).toFixed(2)}
+      </td>
 
-                    <td className="border border-black p-2 text-right">
-                      {Number(order.totalTax || 0).toFixed(2)}
-                    </td>
+      <td className="border border-black px-2 text-right">
+        {Number(order.totalTax || 0).toFixed(2)}
+      </td>
 
-                    <td className="border border-black p-2 text-right">
-                      {Number(order.totalIncl || 0).toFixed(2)}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td
-                    colSpan="7"
-                    className="border border-black p-5 text-center"
-                  >
-                    No sales orders available
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+      <td className="border border-black px-2 text-right">
+        {Number(order.totalIncl || 0).toFixed(2)}
+      </td>
+    </tr>
+  ))}
 
-          <p className="mt-2 text-xs text-gray-500">
-            Double-click an order row to edit.
-          </p>
-        </div>
+  {/* Empty Rows */}
+  {[...Array(Math.max(7 - orders.length, 0))].map((_, index) => (
+    <tr
+      key={`empty-${index}`}
+      className={`h-14 ${
+        (orders.length + index) % 2 === 0
+          ? "bg-white"
+          : "bg-gray-200"
+      }`}
+    >
+      <td className="border border-black px-2 text-blue-600">"</td>
+      <td className="border border-black px-2 text-blue-600">"</td>
+      <td className="border border-black px-2 text-blue-600">"</td>
+      <td className="border border-black px-2 text-blue-600">"</td>
+      <td className="border border-black px-2 text-blue-600">"</td>
+      <td className="border border-black px-2 text-blue-600">"</td>
+      <td className="border border-black px-2 text-blue-600">"</td>
+    </tr>
+  ))}
+</tbody>
+        </table>
+
+        <p className="mt-4 text-sm text-gray-700">
+          Double-click an order row to edit.
+        </p>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default Home;
