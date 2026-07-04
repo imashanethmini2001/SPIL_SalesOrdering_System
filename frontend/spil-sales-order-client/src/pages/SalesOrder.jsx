@@ -311,17 +311,48 @@ function SalesOrder() {
   return (
     <div className="min-h-screen bg-gray-100 p-5">
       <div className="max-w-7xl mx-auto bg-white border-2 border-black">
-        <div className="bg-gray-200 border-b-2 border-black text-center py-1 font-semibold">
-          Sales Order
-        </div>
+        <div className="h-7 bg-gray-100 border-b-2 border-black flex items-center">
+  <div className="flex items-center gap-2 ml-2">
+    {/* Plus */}
+    <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center">
+      <span className="text-[10px] text-white font-bold leading-none">
+        +
+      </span>
+    </div>
+
+    {/* Minus */}
+    <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center">
+      <span className="text-[11px] text-white font-bold leading-none">
+        −
+      </span>
+    </div>
+
+    {/* Close */}
+    <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center">
+      <span className="text-[10px] text-white font-bold leading-none">
+        ×
+      </span>
+    </div>
+  </div>
+
+  <div className="flex-1 text-center font-semibold text-sm pr-16">
+    Sales Order
+  </div>
+</div>
 
         <div className="p-2 border-b-2 border-black flex gap-2 print:hidden">
           <button
-            onClick={handleSave}
-            className="border-2 border-black rounded px-4 py-1 bg-white hover:bg-gray-100"
-          >
-            ✅ Save Order
-          </button>
+  onClick={handleSave}
+  className="flex items-center gap-2 h-8 px-3 bg-white border-2 border-black rounded-md hover:bg-gray-100 transition"
+>
+  <span className="w-5 h-5 rounded-full bg-black text-white flex items-center justify-center text-[11px] font-bold">
+    ✓
+  </span>
+
+  <span className="font-semibold text-sm text-gray-700">
+    Save Order
+  </span>
+</button>
 
           <button
             onClick={handlePrint}
