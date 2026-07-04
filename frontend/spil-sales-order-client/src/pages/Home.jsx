@@ -28,24 +28,33 @@ function Home() {
     <div className="w-[930px] bg-white border-2 border-black">
       {/* Header */}
       <div className="h-7 bg-gray-100 border-b-2 border-black flex items-center">
-        <div className="flex gap-2 ml-3">
-  <div className="w-3.5 h-3.5 rounded-full bg-white border border-black flex items-center justify-center">
-    <span className="text-[9px] font-bold leading-none">+</span>
+  <div className="flex items-center gap-2 ml-2">
+    {/* Plus */}
+    <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center">
+      <span className="text-[10px] text-white font-bold leading-none">
+        +
+      </span>
+    </div>
+
+    {/* Minus */}
+    <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center">
+      <span className="text-[11px] text-white font-bold leading-none">
+        −
+      </span>
+    </div>
+
+    {/* Close */}
+    <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center">
+      <span className="text-[10px] text-white font-bold leading-none">
+        ×
+      </span>
+    </div>
   </div>
 
-  <div className="w-3.5 h-3.5 rounded-full bg-white border border-black flex items-center justify-center">
-    <span className="text-[9px] font-bold leading-none">−</span>
-  </div>
-
-  <div className="w-3.5 h-3.5 rounded-full bg-white border border-black flex items-center justify-center">
-    <span className="text-[9px] font-bold leading-none">×</span>
+  <div className="flex-1 text-center font-semibold text-sm pr-16">
+    Home
   </div>
 </div>
-
-        <h1 className="flex-1 text-center mr-16 font-semibold text-sm">
-          Home
-        </h1>
-      </div>
 
       {/* Add New Row */}
       <div className="h-10 border-b-2 border-black flex items-center px-2">
